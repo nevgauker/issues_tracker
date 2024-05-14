@@ -10,6 +10,7 @@ import { seteuid } from 'process'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createIssueSchema } from '@/app/validationSchema'
 import { z } from 'zod'
+import ErrorMessage from '@/app/components/ErrorMessage'
 
 type IssueFrom = z.infer<typeof createIssueSchema>
 
@@ -43,21 +44,13 @@ const NewIssuePage = () => {
         })}
       >
         <TextField.Root placeholder='Title' {...register('title')} />
-        {errors.title && (
-          <Text color='red' as='p'>
-            {errors.title.message}
-          </Text>
-        )}
+        {<ErrorMessage>{errors.title?.message}</ErrorMessage>}
         <Controller
           name='description'
           control={control}
           render={({ field }) => <SimpleMDE {...field} />}
         />
-        {errors.description && (
-          <Text color='red' as='p'>
-            {errors.description.message}
-          </Text>
-        )}
+        {<ErrorMessage>{errors.description?.message}</ErrorMessage>}
 
         <Button>Submit New Issue</Button>
       </form>
