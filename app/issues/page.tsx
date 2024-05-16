@@ -36,7 +36,7 @@ export default async function Issues() {
         </Table.Header>
         <Table.Body>
           {issues.map(issue => (
-            <IssueRow issue={issue} />
+            <IssueRow issue={issue} key={issue.id} />
           ))}
         </Table.Body>
       </Table.Root>
