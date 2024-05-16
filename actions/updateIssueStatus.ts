@@ -16,10 +16,10 @@ export const updateIssueStatus = async ({
       `${process.env.NEXT_PUBLIC_URL}/api/issues/${issue.id}`,
       { status: status },
     )
-
     revalidatePath('/issues')
     return response.data
   } catch (error) {
-    throw new Error('Failed to fetch issues')
+    console.log('Failed to fetch issues')
+    return []
   }
 }

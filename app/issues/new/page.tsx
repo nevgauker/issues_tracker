@@ -26,13 +26,6 @@ const NewIssuePage = () => {
   const router = useRouter()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   const onSubmit = handleSubmit(async data => {
     try {
       setLoading(true)
@@ -43,8 +36,6 @@ const NewIssuePage = () => {
       setLoading(false)
     }
   })
-
-  if (!mounted) return <></>
 
   return (
     <div className='max-w-xl'>

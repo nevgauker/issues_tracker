@@ -10,6 +10,8 @@ export const fetchIssues = async (): Promise<Issue[]> => {
     )
     return response.data
   } catch (error) {
-    throw new Error('Failed to fetch issues')
+    console.log('Failed to fetch issues')
+
+    return []
   }
 }

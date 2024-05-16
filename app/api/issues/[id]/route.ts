@@ -12,17 +12,16 @@ export async function POST(
     return NextResponse.json(validation.error.format(), { status: 400 })
   }
 
-  const status = body.state
-  const updatedissue = await prisma.issue.update({
-    where: { id: parseInt(params.id) },
-    data: {
-      status: body.status,
-    },
-  })
-
-  if (!updatedissue) {
+  try {
+    const status = body.state
+    const updatedissue = await prisma.issue.update({
+      where: { id: parseInt(params.id) },
+      data: {
+        status: body.status,
+      },
+    })
+    return NextResponse.json(updatedissue, { status: 200 })
+  } catch (error) {
     return NextResponse.json({ error: 'Issue not found' }, { status: 400 })
   }
-
-  return NextResponse.json(updatedissue, { status: 200 })
 }
