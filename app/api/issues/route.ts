@@ -18,3 +18,15 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json(newIssue, { status: 201 })
 }
+
+export async function GET() {
+  try {
+    const issues = await prisma.issue.findMany()
+    return NextResponse.json(issues, { status: 200 })
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Unable to fetch issues' },
+      { status: 500 },
+    )
+  }
+}
