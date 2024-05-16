@@ -5,8 +5,7 @@ import 'easymde/dist/easymde.min.css'
 import { useForm, Controller } from 'react-hook-form'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { seteuid } from 'process'
+import { useEffect, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createIssueSchema } from '@/app/validationSchema'
 import { z } from 'zod'
@@ -28,6 +27,12 @@ const NewIssuePage = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const onSubmit = handleSubmit(async data => {
     try {
       setLoading(true)
@@ -38,6 +43,8 @@ const NewIssuePage = () => {
       setLoading(false)
     }
   })
+
+  if (!mounted) return <></>
 
   return (
     <div className='max-w-xl'>
