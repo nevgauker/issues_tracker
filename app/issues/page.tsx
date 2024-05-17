@@ -23,9 +23,9 @@ export default async function Issues() {
 
   return (
     <div>
-      {/* <Link href='/issues/new'>
+      <Link href='/issues/new'>
         <Button>New Issue</Button>
-      </Link> */}
+      </Link>
       <Table.Root>
         <Table.Header>
           <Table.Row>
