@@ -41,8 +41,8 @@ const IssueRow = ({ issue }: { issue: Issue }) => {
   return (
     <Table.Row key={issue.id}>
       <Table.RowHeaderCell>
-        <div className='flex justify-evenly items-center'>
-          {issue.title}
+        <div className='flex items-center'>
+          <Text className='pr-4 text-lg'>{issue.title}</Text>
           <HoverCard.Root>
             <HoverCard.Trigger>
               <Link href='https://twitter.com/radix_ui' target='_blank'>
@@ -75,7 +75,7 @@ const IssueRow = ({ issue }: { issue: Issue }) => {
       </Table.RowHeaderCell>
       <Table.Cell>
         <div className='flex items-center space-x-3'>
-          {`${issue.status} - `}
+          <Text className='md-4 text-lg'>{`${issue.status} - `}</Text>
           {iconForStatus(issue.status)}
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>

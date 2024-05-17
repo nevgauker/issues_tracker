@@ -2,7 +2,7 @@ import { fetchIssues } from '@/app/actions/getIssues'
 import { Status } from '@prisma/client'
 import Image from 'next/image'
 import { IssuesByStatustChart } from './components/charts/IssuessByStatusChart'
-import { Text } from '@radix-ui/themes'
+import { Button, Text } from '@radix-ui/themes'
 export default async function Home() {
   const issues = await fetchIssues()
 
@@ -21,6 +21,7 @@ export default async function Home() {
   return (
     <div className='flex flex-col justify-center items-center'>
       <h1 className='text-2xl font-bold underline'>Issues By Status</h1>
+
       <IssuesByStatustChart data={data} />
     </div>
   )
