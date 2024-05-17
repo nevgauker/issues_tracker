@@ -5,7 +5,6 @@ import { AiFillBug } from 'react-icons/ai'
 import { usePathname } from 'next/navigation'
 import classnames from 'classnames'
 const Navbar = () => {
-  return
   const currentPath = usePathname()
 
   const links = [
