@@ -4,7 +4,7 @@ import { TextField, Button, Callout } from '@radix-ui/themes'
 import SimpleMDE from 'react-simplemde-editor'
 import { useForm, Controller } from 'react-hook-form'
 import axios from 'axios'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createIssueSchema } from '@/app/validationSchema'
@@ -23,14 +23,14 @@ const NewIssuePage = () => {
   } = useForm<IssueFrom>({
     resolver: zodResolver(createIssueSchema),
   })
-  const router = useRouter()
+  // const router = useRouter()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const onSubmit = handleSubmit(async data => {
     try {
       setLoading(true)
       await axios.post('/api/issues', data)
-      router.push('/issues')
+      // router.push('/issues')
     } catch (err) {
       setError('An unexpected error ocurred.')
       setLoading(false)
