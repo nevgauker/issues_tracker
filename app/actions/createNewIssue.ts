@@ -12,7 +12,10 @@ export const createNewIssue = async ({
   }
 }): Promise<Issue | undefined> => {
   try {
-    const respose = await axios.post('/api/issues', data)
+    const respose = await axios.post(
+      `${process.env.NEXT_PUBLIC_URL}/api/issues`,
+      data,
+    )
     revalidatePath('/issues')
     return respose.data
   } catch (error) {
