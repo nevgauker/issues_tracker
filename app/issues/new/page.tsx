@@ -1,7 +1,7 @@
 'use client'
 import 'easymde/dist/easymde.min.css'
 import { TextField, Button, Callout } from '@radix-ui/themes'
-import SimpleMDE from 'react-simplemde-editor'
+// import SimpleMDE from 'react-simplemde-editor'
 import { useForm, Controller } from 'react-hook-form'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
@@ -11,6 +11,11 @@ import { createIssueSchema } from '@/app/validationSchema'
 import { z } from 'zod'
 import ErrorMessage from '@/app/components/ErrorMessage'
 import Spinner from '@/app/components/Spinner'
+
+import dynamic from 'next/dynamic'
+const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
+  ssr: false,
+})
 
 type IssueFrom = z.infer<typeof createIssueSchema>
 
@@ -46,15 +51,15 @@ const NewIssuePage = () => {
       )}
 
       {/* BUILD ERROR- navigator is not defined  the reason is somewhere in the form*/}
-      <SimpleMDE />
+
       <form className='space-y-3' onSubmit={onSubmit}>
         <TextField.Root placeholder='Title' {...register('title')} />
         {<ErrorMessage>{errors.title?.message}</ErrorMessage>}
-        {/* <Controller
+        <Controller
           name='description'
           control={control}
           render={({ field }) => <SimpleMDE {...field} />}
-        /> */}
+        />
         {<ErrorMessage>{errors.description?.message}</ErrorMessage>}
 
         <Button disabled={loading}>
