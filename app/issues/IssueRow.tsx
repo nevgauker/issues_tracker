@@ -1,6 +1,5 @@
 'use client'
-
-import { updateIssueStatus } from '@/actions/updateIssueStatus'
+import { updateIssueStatus } from '@/app/actions/updateIssueStatus'
 import { Issue, Status } from '@prisma/client'
 import {
   Box,

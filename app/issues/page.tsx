@@ -1,4 +1,4 @@
-import { fetchIssues } from '@/actions/getIssues'
+import { fetchIssues } from '@/app/actions/getIssues'
 import { Button, Table } from '@radix-ui/themes'
 import Link from 'next/link'
 import { RiProgress3Line } from 'react-icons/ri'

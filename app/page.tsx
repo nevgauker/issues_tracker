@@ -1,4 +1,4 @@
-import { fetchIssues } from '@/actions/getIssues'
+import { fetchIssues } from '@/app/actions/getIssues'
 import { Status } from '@prisma/client'
 import Image from 'next/image'
 import { IssuesByStatustChart } from './components/charts/IssuessByStatusChart'
