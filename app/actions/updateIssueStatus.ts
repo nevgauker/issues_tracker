@@ -10,7 +10,7 @@ export const updateIssueStatus = async ({
 }: {
   status: Status
   issue: Issue
-}): Promise<Issue[]> => {
+}): Promise<Issue | undefined> => {
   try {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_URL}/api/issues/${issue.id}`,
@@ -19,7 +19,7 @@ export const updateIssueStatus = async ({
     revalidatePath('/issues')
     return response.data
   } catch (error) {
-    console.log('Failed to fetch issues')
-    return []
+    console.log('Failed to update issue status')
+    return undefined
   }
 }

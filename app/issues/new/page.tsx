@@ -13,6 +13,7 @@ import ErrorMessage from '@/app/components/ErrorMessage'
 import Spinner from '@/app/components/Spinner'
 
 import dynamic from 'next/dynamic'
+import { createNewIssue } from '@/app/actions/createNewIssue'
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
   ssr: false,
 })
@@ -32,13 +33,11 @@ const NewIssuePage = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const onSubmit = handleSubmit(async data => {
-    try {
-      setLoading(true)
-      await axios.post('/api/issues', data)
+    setLoading(true)
+    const newIssue = await createNewIssue({ data })
+    setLoading(false)
+    if (newIssue) {
       router.push('/issues')
-    } catch (err) {
-      setError('An unexpected error ocurred.')
-      setLoading(false)
     }
   })
 
