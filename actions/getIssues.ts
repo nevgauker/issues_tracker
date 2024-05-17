@@ -11,7 +11,6 @@ export const fetchIssues = async (): Promise<Issue[]> => {
     return response.data
   } catch (error) {
     console.log('Failed to fetch issues')
-
     return []
   }
 }
