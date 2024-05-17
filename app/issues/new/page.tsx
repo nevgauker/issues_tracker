@@ -44,14 +44,17 @@ const NewIssuePage = () => {
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
+
+      {/* BUILD ERROR- navigator is not defined  the reason is somewhere in the form*/}
+
       <form className='space-y-3' onSubmit={onSubmit}>
         <TextField.Root placeholder='Title' {...register('title')} />
         {<ErrorMessage>{errors.title?.message}</ErrorMessage>}
-        <Controller
+        {/* <Controller
           name='description'
           control={control}
           render={({ field }) => <SimpleMDE {...field} />}
-        />
+        /> */}
         {<ErrorMessage>{errors.description?.message}</ErrorMessage>}
 
         <Button disabled={loading}>
