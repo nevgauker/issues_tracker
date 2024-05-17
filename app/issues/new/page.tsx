@@ -44,6 +44,20 @@ const NewIssuePage = () => {
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
+      <form className='space-y-3' onSubmit={onSubmit}>
+        <TextField.Root placeholder='Title' {...register('title')} />
+        {<ErrorMessage>{errors.title?.message}</ErrorMessage>}
+        <Controller
+          name='description'
+          control={control}
+          render={({ field }) => <SimpleMDE {...field} />}
+        />
+        {<ErrorMessage>{errors.description?.message}</ErrorMessage>}
+
+        <Button disabled={loading}>
+          Submit New Issue {loading && <Spinner />}
+        </Button>
+      </form>
     </div>
   )
 }
