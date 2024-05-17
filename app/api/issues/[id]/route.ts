@@ -15,7 +15,7 @@ export async function POST(
   try {
     const status = body.state
     const updatedissue = await prisma.issue.update({
-      where: { id: parseInt(params.id) },
+      where: { id: params.id },
       data: {
         status: body.status,
       },
