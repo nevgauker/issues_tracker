@@ -23,14 +23,14 @@ const NewIssuePage = () => {
   } = useForm<IssueFrom>({
     resolver: zodResolver(createIssueSchema),
   })
-  // const router = useRouter()
+  const router = useRouter()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const onSubmit = handleSubmit(async data => {
     try {
       setLoading(true)
       await axios.post('/api/issues', data)
-      // router.push('/issues')
+      router.push('/issues')
     } catch (err) {
       setError('An unexpected error ocurred.')
       setLoading(false)
