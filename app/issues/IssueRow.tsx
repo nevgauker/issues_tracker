@@ -16,8 +16,9 @@ import { FaDoorClosed, FaEnvelopeOpenText } from 'react-icons/fa'
 import { RiProgress3Line } from 'react-icons/ri'
 import { FaRegEye } from 'react-icons/fa'
 import Link from 'next/link'
+import { IssueWithCreator } from '@/types/issueWithCreator'
 
-const IssueRow = ({ issue }: { issue: Issue }) => {
+const IssueRow = ({ issue }: { issue: IssueWithCreator }) => {
   const iconForStatus = (status: Status) => {
     switch (status) {
       case Status.CLOSED:
@@ -34,7 +35,7 @@ const IssueRow = ({ issue }: { issue: Issue }) => {
     issue,
   }: {
     status: Status
-    issue: Issue
+    issue: IssueWithCreator
   }) => {
     await updateIssueStatus({ status: status, issue: issue })
   }
