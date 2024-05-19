@@ -130,7 +130,7 @@ const IssueRow = ({ issue }: { issue: IssueWithCreator }) => {
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       </Table.Cell>
-      <Table.Cell>{issue.creator.email}</Table.Cell>
+      <Table.Cell>{issue.creator?.email ?? ''}</Table.Cell>
     </Table.Row>
   )
 }
