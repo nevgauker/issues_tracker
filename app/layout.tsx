@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 import { Theme, ThemePanel } from '@radix-ui/themes'
 import { Inter } from 'next/font/google'
 import Navbar from './Navbar'
-import { ClerkProvider } from '@clerk/nextjs'
+import SessionWrapper from './components/SessionWrapper'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
+    <SessionWrapper>
       <html lang='en' className={inter.variable}>
         <body className={inter.className}>
           <Theme accentColor='purple'>
@@ -28,6 +28,6 @@ export default function RootLayout({
           </Theme>
         </body>
       </html>
-    </ClerkProvider>
+    </SessionWrapper>
   )
 }

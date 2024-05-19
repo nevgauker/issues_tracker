@@ -129,6 +129,7 @@ const IssueRow = ({ issue }: { issue: Issue }) => {
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       </Table.Cell>
+      <Table.Cell>{issue.creator.email}</Table.Cell>
     </Table.Row>
   )
 }

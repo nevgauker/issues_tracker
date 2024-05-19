@@ -32,6 +32,7 @@ export default async function Issues() {
             <Table.ColumnHeaderCell>Title</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>Status</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>Actions</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>Creator</Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
